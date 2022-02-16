@@ -35,6 +35,9 @@ class SecondFragment : Fragment() {
         binding.buttonSecond.setOnClickListener {
             findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
         }
+
+        val tv = binding.detailTextView
+        tv.text = arguments?.getString("detail")
     }
 
     override fun onDestroyView() {

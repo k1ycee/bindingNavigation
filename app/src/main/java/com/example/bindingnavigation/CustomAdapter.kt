@@ -4,6 +4,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.cardview.widget.CardView
+import androidx.core.os.bundleOf
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bindingnavigation.ItemsViewModel
@@ -31,10 +32,10 @@ class CustomAdapter(private val mList: List<ItemsViewModel>) : RecyclerView.Adap
         // sets the text to the textview from our itemHolder class
         holder.subtitleView.text = ItemsViewModel.subtitle
 
-//        holder.subtitleView.setOnClickListener {
-//            val action = SpecifyAmountFragmentDirections.confirmationAction(holder.subtitleView.text)
-//            it.findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
-//        }
+        holder.subtitleView.setOnClickListener {
+           val bundle = bundleOf("detail" to holder.subtitleView.text)
+            it.findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment, bundle)
+        }
     }
 
     // return the number of the items in the list
